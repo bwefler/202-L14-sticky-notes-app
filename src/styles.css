@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: aliceblue;
+}
+
+.app {
+  width: 1000px;
+  margin: 50px auto;
+}
+
+input,
+textarea {
+  outline: none;
+  resize: none;
+}
+
+.notes-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 8px;
+  margin: 0;
+}
+
+.app-header__title {
+  margin: 10px 20px 0px;
+  font-family: Arial, sans-serif;
+}
+
+.app-header__controls {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 0 10px;
+}
+
+.search-field {
+  border: 2px solid darkgrey;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  width: 16px;
+  margin-left: 8px;
+}
+
+.search,
+.add-new {
+  font-size: 14px;
+  padding: 5px;
+  margin: 0 8px;
+  border-radius: 5px;
+}
+
+.search {
+  flex-grow: 1;
+  width: 300px;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+}
+
+.add-new {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  font-weight: bolder;
+  background-color: #eee;
+  outline: none;
+  border: 2px solid darkgrey;
+}
+
+.note {
+  font-family: "Permanent Marker", cursive;
+  width: 225px;
+  height: 225px;
+  margin: 10px;
+  background-color: lightyellow;
+  border: 1px solid grey;
+  box-shadow: 2px 2px 3px lightgrey;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* .note label, */
+.note__title,
+.note__description {
+  font-family: "Permanent Marker", cursive;
+  width: 100%;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+}
+
+.note__title {
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid darkgrey;
+}
+
+.note__description {
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.note__delete {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 20px;
+  color: #616161;
+  padding: 5px;
+}
+
+.note__delete:hover {
+  color: black;
+  cursor: pointer;
+}
+
+/* added */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
