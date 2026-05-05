@@ -1,7 +1,7 @@
 import React from "react";
 
 const Note = (props) => {
-  console.log(props);
+  // console.log(props);
   const updateTitle = (e) => {
     const updatedValue = e.target.value;
     const editMeId = props.note.id;
@@ -11,6 +11,9 @@ const Note = (props) => {
     const updatedValue = e.target.value;
     const editMeId = props.note.id;
     props.onType(editMeId, "description", updatedValue);
+  };
+  const clickDelete = () => {
+    props.deleteNote(props.note.id);
   };
   return (
     <li className="note">
@@ -27,7 +30,7 @@ const Note = (props) => {
         value={props.note.description}
         onChange={updateDescription}
       />
-      <span className="note__delete">X</span>
+      <span className="note__delete" onClick={clickDelete}>X</span>
     </li>
   );
 };
