@@ -30,7 +30,10 @@ const Note = (props) => {
         value={props.note.description}
         onChange={updateDescription}
       />
-      <span className="note__delete" onClick={clickDelete}>X</span>
+      <span 
+        className="note__delete" 
+        onClick={clickDelete}
+        >X</span>
     </li>
   );
 };
