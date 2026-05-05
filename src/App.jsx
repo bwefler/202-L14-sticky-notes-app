@@ -14,7 +14,6 @@ class App extends Component {
     ],
     searchText: "",
   };
-
   addNote = () => {
     const newNote = {
       id: Date.now(),
@@ -25,7 +24,6 @@ class App extends Component {
     // add new note to existing note array
     this.setState({ notes: [newNote, ...this.state.notes] });
   };
-
   onType = (editMeId, updatedKey, updatedValue) => {
     const updatedNotes = this.state.notes.map((note) => {
       if (note.id === editMeId && updatedKey === "title") {
@@ -37,7 +35,6 @@ class App extends Component {
     });
     this.setState({ notes: updatedNotes });
   };
-
   // Map over the notes array and for each note object
   onSearch = (text) => {
     const newSearchText = text.toLowerCase();
@@ -64,7 +61,6 @@ class App extends Component {
       searchText : newSearchText,
     });
   };
-
   deleteNote = (noteId) => {
     //  remove note which matches note ID
     const updatedNotes = this.state.notes.filter(
@@ -72,12 +68,31 @@ class App extends Component {
     );
     this.setState({ notes : updatedNotes});
   };
-
+  // retrieve notes from browser's local storage upon awakening
+  componentDidMount() {
+    const savedNotesString = localStorage.getItem("savedNotes");
+    if (savedNotesString) {
+      const savedNotes = JSON.parse(savedNotesString);
+      this.setState({ notes: savedNotes });
+    }
+  }  // save notes to browser's local storage after change
+  componentDidUpdate() {
+    const savedNotesString = JSON.stringify(this.state.notes);
+    localStorage.setItem("savedNotes", savedNotesString);
+  }
   render() {
     return (
       <div className="app">
-        <Header onSearch={this.onSearch} addNote={this.addNote} searchText={this.state.searchText} />
-        <NotesList deleteNote={this.deleteNote} onType={this.onType} notes={this.state.notes} />
+        <Header 
+          onSearch={this.onSearch} 
+          addNote={this.addNote} 
+          searchText={this.state.searchText} 
+        />
+        <NotesList 
+          deleteNote={this.deleteNote} 
+          onType={this.onType} 
+          notes={this.state.notes} 
+        />
       </div>
     );
   }
