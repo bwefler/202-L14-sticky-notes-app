@@ -65,11 +65,19 @@ class App extends Component {
     });
   };
 
+  deleteNote = (noteId) => {
+    //  remove note which matches note ID
+    const updatedNotes = this.state.notes.filter(
+      note => note.id !== noteId
+    );
+    this.setState({ notes : updatedNotes});
+  };
+
   render() {
     return (
       <div className="app">
         <Header onSearch={this.onSearch} addNote={this.addNote} searchText={this.state.searchText} />
-        <NotesList onType={this.onType} notes={this.state.notes} />
+        <NotesList deleteNote={this.deleteNote} onType={this.onType} notes={this.state.notes} />
       </div>
     );
   }
